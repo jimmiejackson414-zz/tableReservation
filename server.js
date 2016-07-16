@@ -51,13 +51,26 @@ var tables = [{
 
 
 //moving to html page to attach to search button function
-app.get('/api', function(req, res){
-		console.log('get request sent');
-		for (var i=0; i <tables.length; i++){
-			res.json(tables[i]);
-			console.log('js 56', tables[i]);
+app.get('/api/:tables?', function(req, res){
+	console.log('get request sent');
+	var chosen = req.params.tables;
 
-			// res.json(false);
+	if(chosen){
+		console.log(chosen);
+
+		for (var i=0; i <tables.length; i++){
+
+			if (chosen == tables[i].routeName){
+				res.json(tables[i]);
+				return;
+			}
+		}
+
+		res.json(false);
+	}
+
+	else{
+		res.json(tables);
 	}
 })
 
