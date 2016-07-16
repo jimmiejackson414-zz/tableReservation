@@ -40,25 +40,25 @@ app.get('/tables', function(req, res){
 //TABLE API
 
 var tables = [{
-		routeName: "yoda",
-		name: "Yoda",
-		role: "Jedi Master",
-		age: 900,
-		forcePoints: 2000		
+		name: 'James',
+        phoneNumber: '5127051184',
+        eMail: 'hornung.james@gmail.com',
+        id: '34'
 	}];
 
 //STAR WARS CODE EXAMPLE
-// Search for Specific Character (or all characters) - provides JSON
+// ==============================================
 
-app.get('/api/:tables?', function(req, res){
 
+//moving to html page to attach to search button function
+app.get('/api:tables?', function(req, res){
+		console.log('get request sent');
 		for (var i=0; i <tables.length; i++){
 			res.json(tables[i]);
+			console.log('js 56', tables[i]);
 
 			res.json(false);
 	}
-
-	
 })
 
 // // Create New Characters - takes in JSON input
@@ -66,11 +66,11 @@ app.post('/api/new', function(req, res){
 
 	// req.body hosts is equal to the JSON post sent from the user
 	var newReservation = req.body;
-
-	console.log(newReservation);
+	console.log('js 68', newReservation);
 
 	// We then add the json the user sent to the character array
 	tables.push(newReservation);
+	console.log('js 72', tables)
 
 	// We then display the JSON to the users
 	res.json(newReservation);

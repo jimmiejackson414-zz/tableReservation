@@ -18,14 +18,27 @@
 				<h1><span class="glyphicon glyphicon-fire"></span> Hot Restaurant</h1>
 				<h3>We only have 5 tables! Book your seat before they all are gone! </h3>
 				<hr>
-				<a href="/tables"><button type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
+				<a href="/tables"><button type="button" class="btn btn-primary btn-lg" id="viewReservations"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
 				<a href="/reserve"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
 			</div>
 		</div>
 	</div>
 		
 
-	<script type="text/javascript" scr="/server.js"></script>
+	<script type="text/javascript" src="/server.js">
+		$("#viewReservations").on("click", function(){
+			$.get('/api:tables?', function(req, res){
+				console.log('function running');
+				for (var i=0; i <tables.length; i++){
+					res.json(tables[i]);
+					console.log('home.html 34', tables[i]);
+
+					res.json(false);
+				}
+			})
+		})
+
+	</script>
 
 </body>
 </html>
