@@ -26,17 +26,18 @@
 		
 
 	<script type="text/javascript" src="/server.js">
-		$("#viewReservations").on("click", function(){
-			$.get('/api:tables?', function(req, res){
-				console.log('function running');
-				for (var i=0; i <tables.length; i++){
-					res.json(tables[i]);
-					console.log('home.html 34', tables[i]);
 
-					res.json(false);
-				}
-			})
-		})
+		// $("#viewReservations").on("click", function(){
+		// 	$.get('/api/:tables?', function(req, res){
+		// 		console.log('function running');
+		// 		for (var i=0; i <tables.length; i++){
+		// 			res.json(tables[i]);
+		// 			console.log('home.html 34', tables[i]);
+
+		// 			res.json(false);
+		// 		}
+		// 	})
+		// })
 
 	</script>
 
