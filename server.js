@@ -51,13 +51,13 @@ var tables = [{
 
 
 //moving to html page to attach to search button function
-app.get('/api:tables?', function(req, res){
+app.get('/api', function(req, res){
 		console.log('get request sent');
 		for (var i=0; i <tables.length; i++){
 			res.json(tables[i]);
 			console.log('js 56', tables[i]);
 
-			res.json(false);
+			// res.json(false);
 	}
 })
 
