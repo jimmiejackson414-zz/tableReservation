@@ -29,6 +29,14 @@ app.get('/', function(req, res){
 	res.sendFile(path.join(__dirname, 'home.html'));
 })
 
+app.get('/reserve', function(req, res){
+	res.sendFile(path.join(__dirname, 'reserve.html'));
+})
+
+app.get('/tables', function(req, res){
+	res.sendFile(path.join(__dirname, 'tables.html'));
+})
+
 //TABLE API
 
 var tables = [{
@@ -42,40 +50,28 @@ var tables = [{
 //STAR WARS CODE EXAMPLE
 // Search for Specific Character (or all characters) - provides JSON
 
-// app.get('/api/:tables?', function(req, res){
+app.get('/api/:tables?', function(req, res){
 
-// 	var chosen = req.params.characters;
+		for (var i=0; i <tables.length; i++){
+			res.json(tables[i]);
 
-// 	if(chosen){
-// 		console.log(chosen);
+			res.json(false);
+	}
 
-// 		for (var i=0; i <characters.length; i++){
-
-// 			if (chosen == characters[i].routeName){
-// 				res.json(characters[i]);
-// 				return;
-// 			}
-// 		}
-
-// 		res.json(false);
-// 	}
-
-// 	else{
-// 		res.json(characters);
-// 	}
-// })
+	
+})
 
 // // Create New Characters - takes in JSON input
-// app.post('/api/new', function(req, res){
+app.post('/api/new', function(req, res){
 
-// 	// req.body hosts is equal to the JSON post sent from the user
-// 	var newcharacter = req.body;
+	// req.body hosts is equal to the JSON post sent from the user
+	var newReservation = req.body;
 
-// 	console.log(newcharacter);
+	console.log(newReservation);
 
-// 	// We then add the json the user sent to the character array
-// 	characters.push(newcharacter);
+	// We then add the json the user sent to the character array
+	tables.push(newReservation);
 
-// 	// We then display the JSON to the users
-// 	res.json(newcharacter);
-// })
+	// We then display the JSON to the users
+	res.json(newReservation);
+})
